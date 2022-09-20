@@ -6,20 +6,20 @@ import java.io.*;
 
 public class Main {
 
-    private static final String url = "https://api.nasa.gov/planetary/apod?api_key=si92kf3uQ2ErKZc0fIYJ5HXAuI8i7sgfWEeB4lPx";
+    private static final String URL = "https://api.nasa.gov/planetary/apod?api_key=si92kf3uQ2ErKZc0fIYJ5HXAuI8i7sgfWEeB4lPx";
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         ObjectMapper objectMapper = new ObjectMapper();
-        ParseNASA getFromNasa = new ParseNASA(url);
+        ParseNASA getFromNasa = new ParseNASA(URL);
         try (CloseableHttpResponse response = getFromNasa.getResponse()) {
             Answer answer = objectMapper.
                     readValue(response.getEntity().getContent(), new TypeReference<>() {
                     });
-            String name = getUrlFromString(answer.getUrl());
-            ParseNASA getJpg = new ParseNASA(answer.getUrl());
+            String name = getUrlFromString(answer.getURL());
+            ParseNASA getJpg = new ParseNASA(answer.getURL());
             try (var answerResponse = getJpg.getResponse()) {
                 byte[] bytes = answerResponse.getEntity().getContent().readAllBytes();
-                if (answer.getMedia_type().equals("image")) {
+                if (answer.getMEDIA_TYPE().equals("image")) {
                     File file = new File(name);
                     if (!file.exists()) {
                         file.createNewFile();
@@ -34,12 +34,12 @@ public class Main {
                     throw new RuntimeException("bad media type");
                 }
             }
-        } catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public static String getUrlFromString(String s){
+    public static String getUrlFromString(String s) {
         String[] strings = s.split("/");
         String name = strings[strings.length - 1];
         if (name.contains(".jpg")) {
