@@ -2,14 +2,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Answer {
 
-    private final String COPYRIGHT;
-    private final String DATE;
-    private final String EXPLANATION;
-    private final String HDURL;
-    private final String MEDIA_TYPE;
-    private final String SERVICE_VERSION;
-    private final String TITLE;
-    private final String URL;
+    private final String copyright;
+    private final String date;
+    private final String explanation;
+    private final String hdurl;
+    private final String mediaType;
+    private final String serviceVersion;
+    private final String title;
+    private final String url;
 
     public Answer(
             @JsonProperty("copyright") String copyright,
@@ -21,35 +21,35 @@ public class Answer {
             @JsonProperty("title") String title,
             @JsonProperty("url") String url
     ){
-        this.COPYRIGHT = copyright;
-        this.DATE = date;
-        this.EXPLANATION = explanation;
-        this.HDURL = hdurl;
-        this.MEDIA_TYPE = media_type;
-        this.SERVICE_VERSION = service_version;
-        this.TITLE = title;
-        this.URL = url;
+        this.copyright = copyright;
+        this.date = date;
+        this.explanation = explanation;
+        this.hdurl = hdurl;
+        this.mediaType = media_type;
+        this.serviceVersion = service_version;
+        this.title = title;
+        this.url = url;
     }
 
-    public String getURL(){
-        return URL;
+    public String getUrl(){
+        return url;
     }
 
-    public String getMEDIA_TYPE(){
-        return MEDIA_TYPE;
+    public String getMediaType(){
+        return mediaType;
     }
 
     @Override
     public String toString() {
         return "Answer{" +
-                "\n copyright: " + COPYRIGHT +
-                "\n date: " + DATE +
-                "\n explanation: " + EXPLANATION +
-                "\n hdurl: " + HDURL +
-                "\n media_type: " + MEDIA_TYPE +
-                "\n service_version: " + SERVICE_VERSION +
-                "\n title: " + TITLE +
-                "\n url: " + URL +
+                "\n copyright: " + copyright +
+                "\n date: " + date +
+                "\n explanation: " + explanation +
+                "\n hdurl: " + hdurl +
+                "\n media_type: " + mediaType +
+                "\n service_version: " + serviceVersion +
+                "\n title: " + title +
+                "\n url: " + url +
                 "\n}";
     }
 }

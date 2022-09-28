@@ -8,10 +8,10 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import java.io.IOException;
 
 public class ParseNASA {
-    private final String URL;
+    private final String url;
 
     public ParseNASA(String url){
-        this.URL = url;
+        this.url = url;
     }
 
     private CloseableHttpClient createClient(){
@@ -21,7 +21,7 @@ public class ParseNASA {
     }
 
     private HttpGet createRequest(){
-        HttpGet request = new HttpGet(URL);
+        HttpGet request = new HttpGet(url);
         request.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
         return request;
     }
